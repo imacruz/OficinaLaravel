@@ -35,7 +35,8 @@
 					</div>
 					<div class="form-group">
 					   <div class="pull-right">
-						<a class="btn btn-success"><i class="fa fa-save"></i></a>
+						<a class="inserir btn btn-success" data-toggle="tooltip" title="Inserir"><i class="fa fa-save"></i></a>
+						<a class="limpar btn btn-danger" data-toggle="tooltip" title="Limpar"><i class="fa fa-eraser"></i></a>
 						</div>
 					</div>
 					</form>
