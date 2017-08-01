@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+ Route::group(['prefix' => 'produtos', 'where' => ['id' => '[0-9]+']], function() {
+ 	Route::get('', ['as' => 'produtos.index', 'uses' => 'ProdutosController@index',]);
+ });
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
