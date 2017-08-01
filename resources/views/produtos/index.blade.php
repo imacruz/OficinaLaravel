@@ -18,41 +18,14 @@
 
 
 @section('main-content')
-		<div class="row">
-			<div class="col-md-4">
+		<div class="row">	
+			<div class="col-md-12">
 				<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Inserir Produto</h3>
-				</div>
-				<div class="box-body">
-					<div class="callout callout-danger hidden">
-	                	<p></p>
-	                </div>
-						<form role="form" id="formProdutos">
-							<div class="form-group">
-								<label>Titulo</label>
-								<input type="text" name="titulo" id="titulo" class="form-control">
-								<label>Descrição</label>						
-								<textarea name="descricao"  id="descricao" class="form-control">
-								</textarea>
-							</div>
-							
-						</form>
-						<div class="box-footer">
-							   <div class="pull-right">
-								<a class="inserir btn btn-success" data-toggle="tooltip" title="Inserir"><i class="fa fa-save"></i></a>
-								<a class="limpar btn btn-danger" data-toggle="tooltip" title="Limpar"><i class="fa fa-eraser"></i></a>
-								</div>
-							</div>
-				</div>
-				</div>						
-
-			</div>
-			
-			<div class="col-md-8">
-				<div class="box">
-				<div class="box-header">
-					<h3 class="box-title">Produtos</h3>
+					<h3 class="box-title"></h3>
+					<div class="pull-right">
+						<a class="btn btn-primary" data-toggle="tooltip" title="Inserir Produto"><i class="fa fa-plus"></i></a>
+					</div>
 				</div>
 					<div class="box-body">
 						<table class="table table-bordered" id="produtos">
