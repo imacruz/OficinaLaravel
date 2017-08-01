@@ -25,21 +25,25 @@
 					<h3 class="box-title">Inserir Produto</h3>
 				</div>
 				<div class="box-body">
-					<form >
-					<div class="form-group">
-						<label>Titulo</label>
-						<input type="text" name="titulo" id="descricao" class="form-control">
-						<label>Descrição</label>						
-						<textarea type="text" name="descricao" rows="5" id="descricao" class="form-control">
-						</textarea>
-					</div>
-					<div class="form-group">
-					   <div class="pull-right">
-						<a class="inserir btn btn-success" data-toggle="tooltip" title="Inserir"><i class="fa fa-save"></i></a>
-						<a class="limpar btn btn-danger" data-toggle="tooltip" title="Limpar"><i class="fa fa-eraser"></i></a>
-						</div>
-					</div>
-					</form>
+					<div class="callout callout-danger hidden">
+	                	<p></p>
+	                </div>
+						<form role="form" id="formProdutos">
+							<div class="form-group">
+								<label>Titulo</label>
+								<input type="text" name="titulo" id="titulo" class="form-control">
+								<label>Descrição</label>						
+								<textarea name="descricao"  id="descricao" class="form-control">
+								</textarea>
+							</div>
+							
+						</form>
+						<div class="box-footer">
+							   <div class="pull-right">
+								<a class="inserir btn btn-success" data-toggle="tooltip" title="Inserir"><i class="fa fa-save"></i></a>
+								<a class="limpar btn btn-danger" data-toggle="tooltip" title="Limpar"><i class="fa fa-eraser"></i></a>
+								</div>
+							</div>
 				</div>
 				</div>						
 
@@ -62,7 +66,7 @@
 							</thead>
 							<tbody>
 								@foreach($produtos as $key => $produto)
-								<tr>
+								<tr class="item{{$produto->id}}">
 									<td></td>
 									<td>{{ $produto->titulo }}</td>
 									<td>{{ $produto->descricao }}</td>
