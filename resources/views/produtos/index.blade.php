@@ -24,7 +24,7 @@
 				<div class="box-header">
 					<h3 class="box-title"></h3>
 					<div class="pull-right">
-						<a class="btn btn-primary" data-toggle="tooltip" title="Inserir Produto"><i class="fa fa-plus"></i></a>
+						<a class="inserir btn btn-primary" data-toggle="tooltip" title="Inserir Produto"><i class="fa fa-plus"></i></a>
 					</div>
 				</div>
 					<div class="box-body">
@@ -43,7 +43,9 @@
 									<td></td>
 									<td>{{ $produto->titulo }}</td>
 									<td>{{ $produto->descricao }}</td>
-									<td></td>
+									<td>
+			<a class="edit btn btn-primary" data-id="{{ $produto->id }}" data-titulo="{{ $produto->titulo }}" data-descricao="{{ $produto->descricao }}" ><i class="fa fa-check-square-o"></i></a> 
+									<a class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -52,5 +54,5 @@
 				</div>
 			</div>
 		</div>
-
+@include('produtos.modals.modal')
 @endsection

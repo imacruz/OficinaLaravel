@@ -18,6 +18,8 @@ Route::get('/', function () {
 
  Route::group(['prefix' => 'produtos', 'where' => ['id' => '[0-9]+']], function() {
  	Route::get('', ['as' => 'produtos.index', 'uses' => 'ProdutosController@index',]);
+ 	Route::post('/inserir', ['as' => 'produtos.inserir', 'uses' => 'ProdutosController@inserir']);
+ 	Route::post('/editar', ['as' => 'produtos.editar', 'uses' => 'ProdutosController@editar']);
  });
 Route::auth();
 

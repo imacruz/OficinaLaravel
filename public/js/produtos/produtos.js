@@ -1,5 +1,5 @@
-
 $(document).ready(function($) {
+
 
     $.ajaxSetup({
         headers: {
@@ -7,6 +7,7 @@ $(document).ready(function($) {
         }
     });
 
+/** Configurações da Table que lista os Produtos  **/
 var tabela = $('#produtos').DataTable({
         "paging": true,
         "lengthChange": true,
@@ -57,6 +58,124 @@ var tabela = $('#produtos').DataTable({
         });
     }).draw();
 
+/** Funções JS para o CRUD **/
+
+    $(document).on('click', '.inserir', function() {
+        //Limpar campos 
+        $('#titulo').val("");
+        $('#descricao').val("");
+
+        jQuery('#ModalProdutos').modal('show');
+       
+    });
+    /** **/
+    $(document).on('click', '.add', function(){
+        var dados = new FormData($("#formProdutos")[0]); //pega os dados do form
+        
+            $.ajax({
+            type: 'post',
+            url: "/produtos/inserir",
+            data: dados,
+            processData: false,
+            contentType: false,
+            success: function(data) {  
+                
+                  console.log(data);
+
+                    var editar = "<a class='btn btn-primary><i class='fa fa-check-square-o'></i></a>";
+                    var deletar= "<a class='btn btn-danger><i class='fa fa-trash'></i></a>";
+
+                    var linha = $('#produtos').DataTable().row.add([
+                        null,
+                        data.titulo,
+                        data.descricao,
+                        editar + deletar
+
+                    ]).draw(false).node();
+                    $(linha).addClass('item' + data.id); //adiciona o id para a linha
+
+                    jQuery('#ModalProdutos').modal('hide');
+
+                    $(function() {
+
+                        iziToast.success({
+                            title: 'OK',
+                            message: 'Produto Cadastrado com Sucesso!',
+                        });
+                    });
+
+                
+            },
+            error: function() {
+                jQuery('#ModalProdutos').modal('hide');
+
+                iziToast.error({
+                    title: 'Erro Interno',
+                    message: 'Operação Cancelada!',
+                });
+            },
+
+        });
+
+    });
+
+    $(document).on('click', '.edit', function(){
+        $('.actionBtn').removeClass('add');
+        $('.actionBtn').addClass('salvarEdit');
+        $('#id').val($(this).data('id'));
+        $('#titulo').val($(this).data('titulo'));
+        $('#descricao').val($(this).data('descricao'));
+        jQuery('#ModalProdutos').modal('show');
+    });
+
+    $(document).on('click', '.salvarEdit', function(){
+            var dados = new FormData($("#formProdutos")[0]); //pega os dados do form
+            dados.append('id', $("#id").val());
+
+            $.ajax({
+            type: 'post',
+            url: "/produtos/editar",
+            data: dados,
+            processData: false,
+            contentType: false,
+            success: function(data) {  
+                
+                  console.log(data);
+
+                    var editar = "<a class='editar btn btn-primary' data-id='"+data.id+"' data-titulo='"+data.titulo+"' data-descricao='"+data.descricao+"'><i class='fa fa-check-square-o'></i></a>";
+                    var deletar= "<a class='btn btn-danger'><i class='fa fa-trash'></i></a>";
+
+                    $('#produtos').DataTable().row('.item' + data.id).data([
+                        null,
+                        data.titulo,
+                        data.descricao,
+                        editar + deletar
+
+                    ]).draw(false).node();
+
+                    jQuery('#ModalProdutos').modal('hide');
+
+                    $(function() {
+
+                        iziToast.success({
+                            title: 'OK',
+                            message: 'Produto Atualizado com Sucesso!',
+                        });
+                    });
+
+                
+            },
+            error: function() {
+                jQuery('#ModalProdutos').modal('hide');
+
+                iziToast.error({
+                    title: 'Erro Interno',
+                    message: 'Operação Cancelada!',
+                });
+            },
+
+        });
+    });
 
 
  });

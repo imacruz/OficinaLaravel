@@ -3,13 +3,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title"></h3>
+                <h3 class="modal-title">Inserir Produto</h3>
             </div>
             <div class="modal-body">
                 <div class="callout callout-danger hidden">
                 <p></p>
                 </div>
-                    <form class="form-horizontal" role="form" id="formProdutos">
+                <form class="form-horizontal" role="form" id="formProdutos">
+                    <div class="col-md-12">
                             <div class="form-group">
                                 <label>Titulo</label>
                                 <input type="text" name="titulo" id="titulo" class="form-control">
@@ -17,9 +18,10 @@
                                 <textarea name="descricao"  id="descricao" class="form-control">
                                 </textarea>
                             </div>
+                    </div>
                     </form>
                 <div class="modal-footer">
-                    <button type="button" class="inserir btn btn-success" id="id">
+                    <button type="button" class="actionBtn add btn btn-success" id="id">
                         <i class="fa fa-save"></i>
                     </button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">
